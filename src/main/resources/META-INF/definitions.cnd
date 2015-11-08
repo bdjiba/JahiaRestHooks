@@ -1,0 +1,18 @@
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+
+[jnt:resthookevent] > jnt:content
+ - eventType (string) mandatory
+ - eventStatus (string) mandatory < 'ack', 'lost', 'pending', 'retry'
+
+// Jahia hook subscription
+ [jnt:resthooksubscription] > jnt:content
+ - topics (string) mandatory multiple
+ - subscriptionStatus (string) = 'active' mandatory < 'active', 'inactive'
+ - callbackURL (string) mandatory
+ - owner (weakreference) mandatory < 'jnt:user'
+ - maxRetry (long) = '3'
+ 
+[jnt:hooks] > jnt:content
+ + * (jnt:resthooksubscription)
+ 
